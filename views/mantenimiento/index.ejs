@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mantenimiento!</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+</head>
+<body class="container" style="margin-top: 50px;">
+
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="card"> 
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-pill active">
+                    <a class="nav-link">Mantenimiento!</a>
+                </li>
+                <li class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/mantenimiento/add">Add Mantenimeinto</a>
+                </li>
+                <li class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/user/gerente">Regresar</a>
+                </li>
+            </ul>
+        </div>
+    <div class="card-body">
+        
+        <% if(dataman.length) { %>
+        <table class=" table">
+            <thead class = "table-secondary">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Numero de Mantenimiento</th>
+                    <th scope="col">Numero de Serie</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Hospital</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Tipo de Mantenimiento</th>
+                    <th width="200px">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i< dataman.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= dataman[i].nombreman%></td>
+                    <td><%= dataman[i].departamento%></td>
+                    <td><%= dataman[i].numeroMan%></td>
+                    <td><%= dataman[i].noSerie%></td>
+                    <td><%= dataman[i].costo%></td>
+                    <td><%= dataman[i].fecha%></td>
+                    <td><%= dataman[i].nombrecategoria%></td>
+                    <td><%= dataman[i].nombrehos%></td>
+                    <td><%= dataman[i].nombredoctor%></td>
+                    <td><%= dataman[i].nombremar%></td>
+                    <td><%= dataman[i].nombretipo%></td>
+                    <td>
+                        <a class="btn btn-success edit" href="../mantenimiento/edit/<%=dataman[i].idmantenimiento%>">Edit</a>  
+                       
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
+        
+        <!-- if result is empty -->
+        <% if(!dataman.length) { %>
+            <p class="text-center">No mantenimiento found!</p>
+        <% } %>
+
+        </div>
+    </div>
+
+</body>
+</html>

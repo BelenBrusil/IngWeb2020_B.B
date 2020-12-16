@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Add Mantenimiento</title>
+	<link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+</head>
+<body class="container" style="margin-top: 50px;">
+
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+
+    <div class="card border-secondary"> 
+    	<div class="card-header">
+			Add Mantenimiento
+		</div>
+        <div class="card-body">
+            <form action="/mantenimiento/add" method="post">
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" name="nombreman" value="<%= nombreman %>"autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Departamento:</label>
+                    <input type="text" class="form-control" name="departamento" value="<%= departamento %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Numero de Mantenimeinto:</label>
+                    <input type="text" class="form-control" name="numeroMan" value="<%= numeroMan %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Numero de Serie:</label>
+                    <input type="text" class="form-control" name="noSerie" value="<%= noSerie %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label> Costo:</label>
+                    <input type="text" class="form-control" name="costo" value="<%= costo %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Fecha:</label>
+                    <input type="date" class="form-control" name="fecha" value="<%= fecha %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Categoria:</label>
+                    <select class="custom-select" name="idCategoria" >
+                        <option value="">Seleccione una categoria:</option>
+                        <% for(var i = 0; i< dataCat.length; i++) { %>
+                            <option value="<%= dataCat[i].idcategoria%>"><%= dataCat[i].nombrecategoria%></option>
+                        <% } %>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>Hospital:</label>
+                    <select class="custom-select" name="idHospital" >
+                        <option value="">Seleccione un hospital:</option>
+                        <% for(var i = 0; i< dataHos.length; i++) { %>
+                            <option value="<%= dataHos[i].idhospital%>"><%= dataHos[i].nombrehos%></option>
+                        <% } %>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>Marca:</label>
+                    <select class="custom-select" name="idMarca" >
+                        <option value="">Seleccione una Marca:</option>
+                        <% for(var i = 0; i< dataMar.length; i++) { %>
+                            <option value="<%= dataMar[i].idmarca%>"><%= dataMar[i].nombremar%></option>
+                        <% } %>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo Mantenimiento:</label>
+                    <select class="custom-select" name="idTipom" >
+                        <option value="">Seleccione un tipo de mantenimiento:</option>
+                        <% for(var i = 0; i< dataTipo.length; i++) { %>
+                            <option value="<%= dataTipo[i].idtipom%>"><%= dataTipo[i].nombretipo%></option>
+                        <% } %>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo Doctor:</label>
+                    <select class="custom-select" name="idDoctor" >
+                        <option value="">Seleccione un tipo Doctor:</option>
+                        <% for(var i = 0; i< dataDoc.length; i++) { %>
+                            <option value="<%= dataDoc[i].iddoctor%>"><%= dataDoc[i].nombredoctor%></option>
+                        <% } %>
+                      </select>
+                </div>
+            </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Add"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

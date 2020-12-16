@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Lista de tecnicos!</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+</head>
+<body class="container" style="margin-top: 50px;">
+
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="card"> 
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-pill active">
+                    <a class="nav-link">Resultados Comparacion</a>
+                </li>
+                <li class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/comparacion/seleccionarTecnicos">Nueva Comparacion</a>
+                </li>
+            </ul>
+        </div>
+    <div class="card-body">
+        <h4> Categoria : <%= categoria %></h4>
+        <table class=" table">
+            <thead class = "table-secondary">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tecnico</th>
+                    <th scope="col">Calificacion</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i< matriz.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= matriz[i][0]%></td>
+                    <td><%= matriz[i][1]%></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+            <h5> El tecnico con mayor calificacion es: <%= matriz[0][0]%>  con <%= matriz[0][1]%> puntos </h5>
+        </div>
+    </div>
+
+</body>
+</html>
